@@ -58,6 +58,16 @@ typedef struct freeblock_node
 
 } freeblock_node;
 
+RB_HEAD(addr_tree, freeblock_node);
+RB_HEAD(size_tree, freeblock_node);
+
+// comparators, defined in alloc.c (size_cmp should tie-break on address)
+int addr_cmp(freeblock_node *a, freeblock_node *b);
+int size_cmp(freeblock_node *a, freeblock_node *b);
+
+RB_PROTOTYPE(addr_tree, freeblock_node, addr_entry, addr_cmp)
+RB_PROTOTYPE(size_tree, freeblock_node, size_entry, size_cmp)
+
 
 typedef struct node_chunk {
     struct node_chunk *next;
