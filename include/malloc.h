@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/mman.h>
-#include <bsd/sys/tree.h>
+#include "tree.h"
 
 #ifndef __GNUC__
 # define __attribute__(x)
